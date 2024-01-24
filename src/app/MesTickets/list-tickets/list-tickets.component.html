@@ -1,0 +1,20 @@
+
+<body>
+  <div class="container" >
+    <ng-container *ngIf="events && events.length > 0; else noEventsMessage">
+      <ol class="list-group">
+        <app-item-tickets *ngFor="let event of events" [event]="event"></app-item-tickets>
+      </ol>
+    </ng-container>
+  
+    <ng-template #noEventsMessage>
+ 
+      <div class="text-center">
+
+        <h1>Vous n'avez pas des tickets.</h1>
+        <img  width="15%" height="15%" class=" align-self-center" src="assets/images/vide.png" alt="">
+      </div>
+  
+    </ng-template>
+  </div>
+</body>

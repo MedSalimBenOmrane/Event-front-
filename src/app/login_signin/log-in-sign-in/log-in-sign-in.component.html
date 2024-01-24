@@ -1,0 +1,117 @@
+
+<html lang="en">
+
+<head>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>  
+
+    <div class="container" id="container"    [ngClass]="{ 'active': isActive }">
+        <div class="form-container sign-up">
+            <form #loginForm="ngForm">
+                <h1>Inscription</h1>
+                  <!----------------------------------mail-->
+                  <input type="email" id="email" ngModel name="email" class="form-control" email required #inputEmail="ngModel" placeholder="E-mail" 
+                  (blur)="notif( !inputEmail.value && inputEmail.touched ,' L Email est requis.')  "  
+                  (blur)="notif( inputEmail.invalid && inputEmail.dirty && inputEmail.touched,'  L email nest pas valide')  " />
+
+             <!----------------------------------First name-->
+             <input type="text"  ngModel name="firstname" class="form-control"  required #inputfirstname="ngModel" placeholder="Prénom" 
+             (blur)="notif( !inputfirstname.value && inputfirstname.touched ,' Le Prénom est requis.')  "  
+             />
+                <!----------------------------------Full name-->
+                <input type="text"  ngModel name="name" class="form-control"  required #inputname="ngModel" placeholder="Nom" 
+                (blur)="notif( !inputname.value && inputname.touched ,' Le nom est requis.')  "  
+                />
+          
+                <!----------------------------------phone number-->
+                <input type="number" ngModel name="phone" class="form-control"  required length="8"#inputphone="ngModel" placeholder="Numero de téléphone (8 caractères)" minlength="8" maxlength="8"
+                (blur)="notif( inputphone.errors && inputphone.touched,' numero de telephone composé de 8 caractères')  "  
+                />
+
+
+
+              
+
+                 <!------------------------------------CIN-->
+                 <input type="number" ngModel name="cin" class="form-control"  required length="8"#inputcin="ngModel" placeholder="CIN" 
+                 (blur)="notif( !inputcin.value && inputcin.touched,' CIN composé de 8 caractères')  "  
+                 />
+
+
+                  <!------------------------------------password-->
+                  <input required minlength="4" type="password" id="password" ngModel name="password" class="form-control"  #inputpwd="ngModel" placeholder="mot de passe" 
+                  (blur)="notif( !inputpwd.value && inputpwd.touched,' Le mot de passe est requis.')  "  
+                  
+                   
+                   />
+                
+                  <!--<div >
+                       Mot de passe associé a ce compte est incorrecte 
+                  </div>-->                
+
+
+
+                <button>S'inscrire</button>
+            </form>
+        </div>
+
+
+
+
+        <div class="form-container sign-in">
+            <form #signinForm="ngForm">
+                <h1>Connexion</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span></span>
+                
+                <!----------------------------------mail-->
+                <input type="email" id="email" ngModel name="email" class="form-control" email required #inputEmail2="ngModel" placeholder="E-mail" 
+                (blur)="notif( !inputEmail2.value && inputEmail2.touched ,' L Email est requis.')  "  
+                (blur)="notif( inputEmail2.invalid && inputEmail2.dirty && inputEmail.touched,'  L email nest pas valide')  " />
+
+                 <!--<div class=" pb-2 mb-4 text-danger border-bottom border-danger"  *ngIf="inputEmail.invalid && inputEmail.dirty && inputEmail.touched">
+                    L’e-mail entré n’est pas associé à un compte 
+               </div>-->
+
+               <!------------------------------------password-->
+               <input required minlength="8" type="password" id="password" ngModel name="password" class="form-control"  #inputpwd1="ngModel" placeholder="mot de passe" 
+               (blur)="notif( !inputpwd1.value && inputpwd1.touched,' Le mot de passe est requis.')  "  
+                />
+               
+               <!--<div >
+                    Mot de passe associé a ce compte est incorrecte 
+               </div>-->
+                <a href="#">mot de passe oublier ?</a>
+                <button>Se connecter</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                  <h1>Bienvenue de retour !</h1>
+                  <p>Entrez vos informations personnelles pour utiliser toutes les fonctionnalités du notre site.</p>
+                  <button class="hidden" (click)="toggleLogin()">Se connecter</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                  <h1>Hello, Friend!</h1>
+                  <p>Nous avons facilité l'achat de vos billets en seulement deux clics</p>
+                  <button class="hidden" (click)="toggleLogin()">S' inscrire</button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

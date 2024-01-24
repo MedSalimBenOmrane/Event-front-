@@ -1,0 +1,17 @@
+<div class="col-lg-12 col-sm-6 col-md-4">
+   
+        <div class="row ">
+            
+            <div class="col-lg-3 col-sm-6 col-md-3" *ngFor="let event of events">
+                
+                    <div class="affiche" style="display: flex;">
+                    
+                    <app-affiche2 [event]="event"></app-affiche2>
+               
+                </div>
+            
+            </div>
+        
+        </div>
+    
+</div>

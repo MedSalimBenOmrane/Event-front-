@@ -1,0 +1,21 @@
+
+<body>
+    <div class="row pt-3">
+<app-detail-affiche [event]="event" [showStatus]="false"></app-detail-affiche>
+</div>
+
+<div class="container mt-3" *ngIf="event.capacity != 0">
+    <div class="row pt-3 pb-3">
+        <div class="col-9 align-self-center">
+  
+</div>
+<div class="col-3 align-self-end">
+    <button class="btn btn-primary ps-3 pe-3 ms-3 ">acheter</button>
+    <button class="btn btn-danger ps-3 pe-3 ms-3 ">reserver</button>
+    
+</div>
+</div>
+</div>
+</body>
+
+
