@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Event } from '../../model/event';
 import { Router } from '@angular/router';
+import { MesEventService } from 'src/app/services/mes-event.service';
 
 @Component({
   selector: 'app-detail-affiche',
@@ -11,7 +12,8 @@ export class DetailAfficheComponent  implements OnInit {
   @Input() event!:Event
   @Input() showStatus=true;
   bgcolor!:string;
-  constructor(private router:Router){
+  constructor(private router:Router,
+              private mesEvent:MesEventService){
    /* if(this.event.status=="acccepte")
     {this.bgcolor="green";}
     else if(this.event.status=="en attente")
@@ -35,6 +37,11 @@ export class DetailAfficheComponent  implements OnInit {
   modifier() {
     const link=['user/modifier', this.event.id];
     this.router.navigate(link);
+  }
+
+  delete(id:number):void{
+    this.mesEvent.deleteEvent(id);
+
   }
 
 

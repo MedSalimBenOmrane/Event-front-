@@ -24,6 +24,7 @@ import { LogInSignInComponent } from './login_signin/log-in-sign-in/log-in-sign-
 import { ToggleService } from './login_signin/service/toggle.service';
 import { AppUserComponent } from './pages/app-user/app-user.component';
 import { ModifEventComponent } from './pages/modif-event/modif-event.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ModifEventComponent } from './pages/modif-event/modif-event.component';
      MatIconModule,
      AppRoutingModule,
      FormsModule,
-     ToastrModule.forRoot()
+     ToastrModule.forRoot(),
+     HttpClientModule,
      
   ],
   providers: [ToggleService],

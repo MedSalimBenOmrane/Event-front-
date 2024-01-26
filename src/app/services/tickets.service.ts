@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../model/event';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+const link="http://localhost:3000/ticket";
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TicketsService {
   private events: Event [];
   private event!:Event;
-  constructor() {
+  constructor(private http :HttpClient) {
 
     this.events =[
       new Event(  1,"culture event","Music",new Date(2024, 11, 12),"dj X","Event adress 1 ",0,18,false,"white",15,"manouba","affiche1","acccepte"),
@@ -27,6 +33,15 @@ export class TicketsService {
     return this.events ;
 
    }
+/*
+   getEvents():Observable<Event[]>
+   {
+
+    return this.events ;
+    return this.http.get<Event[]>(link+"/purchaser");
+
+   }
+   */
   getEventById(id: number): Event  {
 
       return this.events.find(p => p.id == id) || new Event(); // Utilisez "||" pour renvoyer une nouvelle Personne si aucune personne n'est trouvée.
@@ -37,5 +52,16 @@ export class TicketsService {
 
   deleteEvent(id: number): void {
     this.events = this.events.filter(p => p.id !== id);
+  }
+
+
+  achat(id:number){
+    this.http.post(link+"/buy",id);
+
+  }
+
+  reserve(id:number){
+    this.http.post(link+"/reserve",id);
+
   }
 }

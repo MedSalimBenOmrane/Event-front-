@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../model/event';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+const link="http://localhost:3000/event";
 @Injectable({
   providedIn: 'root'
 })
+
 export class HomeService {
 
   private events: Event [];
   private event!:Event;
-  constructor() {
+  
+  constructor( ) {
+  
 
     this.events =[
       new Event(  1,"culture event","Music",new Date(2024, 11, 12),"dj X","Event adress 1 ",0,18,false,"white",15,"manouba","affiche1","acccepte"),
@@ -19,12 +25,23 @@ export class HomeService {
     ];
    }
 
+
    getEvents():Event[]
    {
 
     return this.events ;
+    
 
    }
+   /*
+   getEvents():Observable<Event[]>
+   {
+
+    
+    return this.http.get<Event[]>(link);
+
+   }
+   */
   getEventById(id: number): Event  {
 
       return this.events.find(p => p.id == id) || new Event(); // Utilisez "||" pour renvoyer une nouvelle Personne si aucune personne n'est trouvée.

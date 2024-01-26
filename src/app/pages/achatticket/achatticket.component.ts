@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Event } from '../../model/event';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from '../../services/home.service';
+import { TicketsService } from 'src/app/services/tickets.service';
 
 @Component({
   selector: 'app-achatticket',
@@ -14,6 +15,7 @@ export class AchatticketComponent {
     private homeService: HomeService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private ticket:TicketsService
 
   ) { }
 
@@ -29,5 +31,13 @@ export class AchatticketComponent {
       }
     );
   }
+achat(id:number){
 
+  this.ticket.achat(id);
+}
+
+reserve(id:number){
+
+  this.ticket.reserve(id);
+}
 }
